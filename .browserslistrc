@@ -1,0 +1,8 @@
+{
+    "browserslist": [
+        "last 1 version",
+        "> 10%",
+        "maintained node versions",
+        "not dead"
+    ]
+}
