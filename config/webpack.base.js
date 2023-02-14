@@ -46,18 +46,18 @@ module.exports = {
         enforce: 'pre',
         use: [
           'thread-loader',
-          {
-            loader: 'babel-loader',
-            options: {
-              plugins: isDev ? [require.resolve('react-refresh/babel')] : [],
-            }
-          }]
+          'babel-loader',
+        ]
       },
       {
         test: /\.(png|jpg|jpeg|gif|svg)$/,
+        // asset/resource： 发送一个单独的文件并导出 URL。之前通过使用 file-loader 实现。
+        // asset/inline： 导出一个资源的 data URI。之前通过使用 url-loader 实现。
+        // asset/source： 导出资源的源代码。之前通过使用 raw-loader 实现。
+        // asset： 在导出一个 data URI 和发送一个单独的文件之间自动选择。之前通过使用 url-loader，并且配置资源体积限制实现。
         type: "asset",
         parser: {
-          //转base64的条件
+          // 转base64的条件
           dataUrlCondition: {
             maxSize: 10 * 1024, // 10kb
           }
@@ -77,20 +77,6 @@ module.exports = {
         generator: {
           filename: 'static/fonts/[name].[contenthash:6][ext]', // 文件输出目录和命名
         },
-      },
-      {
-        test: /\.svg$/i,
-        type: 'asset',
-        issuer: /\.[jt]sx?$/,
-        include: path.resolve(__dirname, '../src/asset/icon'),
-        resourceQuery: /url/, // *.svg?url
-      },
-      {
-        test: /\.svg$/i,
-        issuer: /\.[jt]sx?$/,
-        resourceQuery: { not: [/url/] },
-        exclude: path.resolve(__dirname, '../src/assets/icon'),
-        use: [{ loader: '@svgr/webpack', options: { icon: true } }],
       },
       {
         test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)$/, // 匹配媒体文件

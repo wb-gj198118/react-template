@@ -14,6 +14,9 @@ module.exports = {
 	],
 	"parser": "@typescript-eslint/parser",
 	"parserOptions": {
+		"ecmaFeatures": {
+			"jsx": true
+		},
 		"ecmaVersion": "latest"
 	},
 	"plugins": [
@@ -21,6 +24,8 @@ module.exports = {
 		"@typescript-eslint"
 	],
 	"rules": {
+		"react/react-in-jsx-scope": 0,
+		"react/jsx-uses-react": 0,
 		"indent": [
 			"error",
 			"tab"
@@ -29,13 +34,13 @@ module.exports = {
 			"error",
 			"unix"
 		],
-		"quotes": [
-			"error",
-			"double"
-		],
-		"semi": [
-			"error",
-			"always"
-		]
+		// "quotes": [
+		// 	"error",
+		// 	"double"
+		// ],
+		// "semi": [
+		// 	"error",
+		// 	"always"
+		// ]
 	}
 };

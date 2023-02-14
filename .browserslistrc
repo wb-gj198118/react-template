@@ -1,8 +1,3 @@
-{
-    "browserslist": [
-        "last 1 version",
-        "> 10%",
-        "maintained node versions",
-        "not dead"
-    ]
-}
+> 1% # 市场占有率
+last 15 version # 最后15个版本
+not dead # 超过 24 个月没被官方维护的浏览器
